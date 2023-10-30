@@ -19,6 +19,7 @@ const Category = ({ params }) => {
         <div>
             <h2 className={styles.title}>{params.category}</h2>
             <hr />
+            <br />
             {data.map(items => (
                 <div>
                     <h2>{items.title}</h2>
