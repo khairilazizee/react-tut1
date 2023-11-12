@@ -1,8 +1,15 @@
 import Link from 'next/link';
 import React from 'react'
 
+
+
+export const metadata = {
+    title: 'Blog',
+    description: 'Blog page',
+}
+
 async function getData() {
-    const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
+    const res = await fetch('http://localhost:3000/api/posts', {
         cache: "no-store",
     });
 
@@ -19,8 +26,8 @@ const Blog = async () => {
     return (
         <div>
             {data.map(item => (
-                <div key={item.id}>
-                    <Link href={`/blog/${item.id}`}>
+                <div key={item._id}>
+                    <Link href={`/blog/${item._id}`}>
                         {item.title}
                     </Link>
                 </div>

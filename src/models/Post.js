@@ -1,8 +1,14 @@
 import mongoose from "mongoose";
 
-const { Schema } = mongoose
+const { Schema } = mongoose;
 
-const postSchema = new Schema({
+const modelName = "Post";
+
+// Check if the model already exists
+const existingModel = mongoose.models[modelName];
+
+// If the model already exists, use it; otherwise, create a new one
+const Post = existingModel || mongoose.model(modelName, new Schema({
     title: {
         type: String,
         required: true,
@@ -17,8 +23,8 @@ const postSchema = new Schema({
     },
     content: {
         type: String,
-        required: true
+        required: true,
     }
-}, { timestamps: true })
+}, { timestamps: true }));
 
-export default mongoose.model("Post", postSchema);
+export default Post;
